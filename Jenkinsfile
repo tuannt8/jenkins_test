@@ -24,26 +24,34 @@ pipeline{
     agent any
 
     stages{
-        stage('Build'){
-            steps{
-                script{
-                        if(params.Build_Windows == true)
-                        {
-                            Build()
-                        }
-                        else
-                        {
-                            echo "Skip build"
-                        }
-                        
+        stage('Build')
+        {
+            steps
+            {
+                script
+                {
+                    if(params.Build_Windows == true)
+                    {
+                        Build()
+                    }
+                    else
+                    {
+                        echo "Skip build"
                     }
                 }
-            }                
-        
+            }
+        }                
+    
 
-        stage('Test'){
-            steps{
-                powershell -File test.ps1
+        stage('Test')
+        {
+            steps
+            {
+                node ('MyWindowsSlave') 
+                {
+                    PowerShell(". '.\\test.ps1'") 
+                }
+                // powershell -File test.ps1
             }
         }
 
