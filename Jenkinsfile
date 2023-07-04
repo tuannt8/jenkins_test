@@ -43,16 +43,10 @@ pipeline{
 
         stage('Test'){
             steps{
-                script{
-                    if(params.Test_Windows == true){
-                        Test()
-                    }
-                    else
-                    {
-                        echo "Skip test"
-                    }
-                }
-            } 
+                bat ".\test.ps1"
+            }
         }
+
+
     }                       
 }
