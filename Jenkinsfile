@@ -17,12 +17,17 @@ pipeline{
     agent any
     stages{
         stage('Build and test'){
-            steps{
-                script{
-                    if(params.Build_Windows == true){
-                        Test()
+            stage('Build'){
+                steps{
+                    script{
+                        if(params.Build_Windows == true){
+                            Test()
+                        }
                     }
-                }
+                }                
+            }
+            stage('Test'){
+                
             }
         }
     }
