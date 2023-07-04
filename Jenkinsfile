@@ -43,7 +43,7 @@ pipeline{
 
         stage('Test'){
             steps{
-                bat ".\test.ps1"
+                powershell -Command .\test.ps1
             }
         }
 
