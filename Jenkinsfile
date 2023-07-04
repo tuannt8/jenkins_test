@@ -22,26 +22,30 @@ pipeline{
                     description: 'Again build windows')
     }
     agent any
+
     stages{
         stage('Build_and_test'){
-            stage('Build'){
-                steps{
-                    script{
-                        if(params.Build_Windows == true){
-                            Build()
+            stages{
+                stage('Build'){
+                    steps{
+                        script{
+                            if(params.Build_Windows == true){
+                                Build()
+                            }
                         }
-                    }
+                    }                
+                }
+                stage('Test'){
+                    steps{
+                        script{
+                            if(params.Build_Windows == true){
+                                Test()
+                            }
+                        }
+                    } 
                 }                
             }
-            stage('Test'){
-                steps{
-                    script{
-                        if(params.Build_Windows == true){
-                            Test()
-                        }
-                    }
-                } 
-            }
+
         }
     }
 }
