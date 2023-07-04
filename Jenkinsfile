@@ -23,36 +23,38 @@ pipeline{
     }
     agent any
 
-    stages{
-        stage('Build_and_test'){
-            stages{
-                if(params.Build_Windows == true)
-                {
-                    stage('Build'){
-                        steps{
-                            script{
-                                if(params.Build_Windows == true){
-                                    Build()
-                                }
+    stage("All"){
+        stages{
+            stage('Build'){
+                steps{
+                    script{
+                            if(params.Build_Windows == true)
+                            {
+                                Build()
                             }
-                        }                
-                    }                    
-                }
-                if(params.Test_Windows == true)
-                {
-                    stage('Test'){
-                        steps{
-                            script{
-                                if(params.Build_Windows == true){
-                                    Test()
-                                }
+                            else
+                            {
+                                echo "Skip build"
                             }
-                        } 
-                    }                       
-                }
-             
-            }
+                            
+                        }
+                    }
+                }                
+            
 
-        }
+            stage('Test'){
+                steps{
+                    script{
+                        if(params.Test_Windows == true){
+                            Test()
+                        }
+                        else
+                        {
+                            echo "Skip test"
+                        }
+                    }
+                } 
+            }
+        }                       
     }
 }
