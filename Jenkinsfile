@@ -5,6 +5,13 @@ def Test()
     }
 }
 
+def Build()
+{
+    stage("Build"){
+        bat "echo \"ha ja\""
+    }
+}
+
 pipeline{
     parameters{
         booleanParam(name:'Build_Windows', 
@@ -16,18 +23,24 @@ pipeline{
     }
     agent any
     stages{
-        stage('Build and test'){
+        stage('Build_and_test'){
             stage('Build'){
+                steps{
+                    script{
+                        if(params.Build_Windows == true){
+                            Build()
+                        }
+                    }
+                }                
+            }
+            stage('Test'){
                 steps{
                     script{
                         if(params.Build_Windows == true){
                             Test()
                         }
                     }
-                }                
-            }
-            stage('Test'){
-                
+                } 
             }
         }
     }
