@@ -1,14 +1,14 @@
 def Test()
 {
     stage("test"){
-        bat "echo \"ha ja\""
+        bat "echo \"Test test test test test test\""
     }
 }
 
 def Build()
 {
     stage("Build"){
-        bat "echo \"ha ja\""
+        bat "echo \"Build build build\""
     }
 }
 
@@ -26,24 +26,30 @@ pipeline{
     stages{
         stage('Build_and_test'){
             stages{
-                stage('Build'){
-                    steps{
-                        script{
-                            if(params.Build_Windows == true){
-                                Build()
+                if(params.Build_Windows == true)
+                {
+                    stage('Build'){
+                        steps{
+                            script{
+                                if(params.Build_Windows == true){
+                                    Build()
+                                }
                             }
-                        }
-                    }                
+                        }                
+                    }                    
                 }
-                stage('Test'){
-                    steps{
-                        script{
-                            if(params.Build_Windows == true){
-                                Test()
+                if(params.Test_Windows == step([: 'GetTestResults']){
+                    stage('Test'){
+                        steps{
+                            script{
+                                if(params.Build_Windows == true){
+                                    Test()
+                                }
                             }
-                        }
-                    } 
-                }                
+                        } 
+                    }                       
+                }
+             
             }
 
         }
