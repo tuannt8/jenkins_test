@@ -38,7 +38,8 @@ pipeline{
                         }                
                     }                    
                 }
-                if(params.Test_Windows == step([: 'GetTestResults']){
+                if(params.Test_Windows == true)
+                {
                     stage('Test'){
                         steps{
                             script{
