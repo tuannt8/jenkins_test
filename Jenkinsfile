@@ -47,10 +47,8 @@ pipeline{
         {
             steps
             {
-                node ('MyWindowsSlave') 
-                {
-                    PowerShell(". '.\\test.ps1'") 
-                }
+                
+                PowerShell(". '.\\test.ps1'") 
                 // powershell -File test.ps1
             }
         }
