@@ -43,7 +43,7 @@ pipeline{
 
         stage('Test'){
             steps{
-                powershell -Command .\test.ps1
+                powershell -File .\test.ps1
             }
         }
 
