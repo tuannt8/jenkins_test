@@ -45,12 +45,9 @@ pipeline{
 
         stage('Test')
         {
-            steps
-            {
-                
-                PowerShell(". '.\\test.ps1'") 
-                // powershell -File test.ps1
-            }
+
+            PowerShell(". '.\\test.ps1'") 
+
         }
 
 
