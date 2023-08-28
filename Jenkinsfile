@@ -47,10 +47,8 @@ pipeline{
         {
             steps
             {
-                script
-                {
-                    powershell "Write-Output 'sdfsd fdsf sdf sdfsd fsd fsd fsdf'"
-                }
+                powershell "Invoke-RestMethod 'http://autotest2.phaseone.com/generic-webhook-trigger/invoke?token=SDK-TEST-CPP&imageSdkVer=5.0.0' -Method 'POST' | ConvertTo-Json"
+                
                 
                 
                 
