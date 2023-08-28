@@ -17,9 +17,10 @@ pipeline{
         booleanParam(name:'Build_Windows', 
                     defaultValue: true,
                     description: 'Again build windows')
-                booleanParam(name:'Test_Windows', 
-                    defaultValue: true,
-                    description: 'Again build windows')
+        booleanParam(name:'Test_Windows', 
+            defaultValue: true,
+            description: 'Again build windows')
+        string(name: 'VERSION', defaultValue: '5.0.0', description: '')
     }
     agent any
 
@@ -47,8 +48,8 @@ pipeline{
         {
             steps
             {
-                powershell "Invoke-RestMethod 'http://autotest2.phaseone.com/generic-webhook-trigger/invoke?token=SDK-TEST-CPP&imageSdkVer=5.0.0' -Method 'POST' | ConvertTo-Json"
-                
+                // powershell "Invoke-RestMethod 'http://autotest2.phaseone.com/generic-webhook-trigger/invoke?token=SDK-TEST-CPP&imageSdkVer=5.0.0' -Method 'POST' | ConvertTo-Json"
+                powershell "Write-Output 'asdasd sadsa dsad \${params.VERSION}'"
                 
                 
                 
