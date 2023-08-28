@@ -47,10 +47,12 @@ pipeline{
         {
             steps
             {
-                step
+                script
                 {
                     powershell ping google.com 
                 }
+                
+                
                 
                 // Invoke-RestMethod 'http://autotest2.phaseone.com/generic-webhook-trigger/invoke?token=SDK-TEST-CPP&imageSdkVer=5.0.0' -Method 'POST' | ConvertTo-Json
                 
