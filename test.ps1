@@ -6,6 +6,6 @@ dotnet build . --configuration Release
 
 echo "Execute test"
 cd bin\Release\net6.0
-dotnet test UnitTest.dll
+dotnet test UnitTest.dll  --logger:"trx;LogFileName=TestResults.trx"
 
 cd $curPath
