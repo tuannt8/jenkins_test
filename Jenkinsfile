@@ -49,7 +49,7 @@ pipeline{
             {
                 script
                 {
-                    powershell Write-Output'sdfsd fdsf sdf sdfsd fsd fsd fsdf '
+                    powershell "Write-Output 'sdfsd fdsf sdf sdfsd fsd fsd fsdf'"
                 }
                 
                 
