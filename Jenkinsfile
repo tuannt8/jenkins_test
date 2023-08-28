@@ -49,7 +49,7 @@ pipeline{
             {
                 script
                 {
-                    powershell ping google.com 
+                    powershell Write-Output'sdfsd fdsf sdf sdfsd fsd fsd fsdf '
                 }
                 
                 
